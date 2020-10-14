@@ -16,7 +16,7 @@ public class Modifer {
 	 */
 	public static void main(String[] args) {
 		PolyExample pe = new PolyExample();
-		pe.add("Demo"); // inheritence
+//		pe.add("Demo"); // inheritence
 		pe.add(1, "Demo"); // trying to access private method
 	}
 
