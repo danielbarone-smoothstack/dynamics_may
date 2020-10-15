@@ -5,10 +5,11 @@ package com.ss.lms.jdbc;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.Scanner;
+
 
 /**
  * This is a demo class for JDBC Connection to Authors LMS Table
@@ -16,7 +17,7 @@ import java.util.Scanner;
  * @author ppradhan
  *
  */
-public class ReadAllAuthors {
+public class ReadAllAuthorsByName {
 
 	public static String driverName = "com.mysql.cj.jdbc.Driver";
 	public static String url = "jdbc:mysql://localhost:3306/library?useSSL=false";
@@ -35,8 +36,10 @@ public class ReadAllAuthors {
 		try {
 			Class.forName(driverName);
 			Connection conn = DriverManager.getConnection(url, userName, password);
-			Statement stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery(query);
+//			Statement stmt = conn.createStatement();
+			PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM tbl_author where authorName = ?");
+			pstmt.setString(1, authorName);
+			ResultSet rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
 				System.out.println("Author Name: "+ rs.getString("authorName"));
