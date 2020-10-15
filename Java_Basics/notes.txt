@@ -1,0 +1,9 @@
+JDBC Connection
+
+1> Register the Driver with JVM
+
+2> Create a connection - address of where db server is running? auth creds?
+
+3> Statement Object - Java Util Object compiling your queries.
+
+4> Write your queries - execute it. 
